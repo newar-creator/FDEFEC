@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Fichas de Estudio - Examen de Ciudadanía y Constitución</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', 'Roboto', 'Comic Neue', 'Helvetica Neue', sans-serif;
+            padding: 30px 20px;
+            color: #1e2a3a;
+        }
+
+        /* Contenedor principal estilo block de notas */
+        .study-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #1e3c72, #2b4c7c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .sub {
+            text-align: center;
+            color: #4a627a;
+            margin-bottom: 40px;
+            font-weight: 500;
+            border-bottom: 2px dashed #cbd5e1;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 8px;
+        }
+
+        /* Grid de fichas estilo tarjetas */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+        }
+
+        /* cada ficha */
+        .study-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 12px 22px -10px rgba(0, 0, 0, 0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e4e9f0;
+        }
+
+        .study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* cabecera de la ficha */
+        .card-header {
+            background: #2c3e66;
+            color: white;
+            padding: 18px 20px;
+            font-weight: bold;
+            font-size: 1.35rem;
+            letter-spacing: -0.2px;
+            border-bottom: 4px solid #f9b43a;
+        }
+
+        .card-header span {
+            background: #f9b43a;
+            color: #1e2a3a;
+            font-size: 0.8rem;
+            border-radius: 40px;
+            padding: 4px 10px;
+            margin-left: 12px;
+            vertical-align: middle;
+            font-weight: 600;
+        }
+
+        /* contenido de la respuesta */
+        .card-content {
+            padding: 20px 22px;
+            background: #fefefe;
+            flex-grow: 1;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #1e2f3e;
+        }
+
+        .card-content p {
+            margin-bottom: 12px;
+        }
+
+        .card-content ul, .card-content ol {
+            margin-left: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card-content li {
+            margin: 6px 0;
+        }
+
+        .example-box {
+            background: #f8f9fc;
+            border-left: 5px solid #f9b43a;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 16px;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            background: #eef2ff;
+            color: #2c3e66;
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        hr {
+            margin: 15px 0;
+            border: 0;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 45px;
+            font-size: 0.85rem;
+            color: #4b6b8f;
+            background: #e9edf2;
+            padding: 14px;
+            border-radius: 60px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button.download-btn {
+            background: #2c3e66;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 12px 28px;
+            border-radius: 40px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 30px auto;
+            transition: 0.2s;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            font-family: inherit;
+        }
+
+        button.download-btn:hover {
+            background: #1f2f50;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 700px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .card-header {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="study-container" id="studyMaterial">
+    <h1>📚 Fichas de Estudio</h1>
+    <div style="text-align: center;">
+        <div class="sub">Constitución Nacional · Democracia · Libertad y Dignidad · Normas</div>
+    </div>
+
+    <div class="cards-grid">
+        <!-- FICHA 1 -->
+        <div class="study-card">
+            <div class="card-header">📌 1. Constitución Nacional <span>Artículo 31</span></div>
+            <div class="card-content">
+                <p><strong>¿Qué es?</strong> Es la ley más importante de la Argentina. Organiza el Estado, las provincias y reconoce los derechos de los habitantes.</p>
+                <p><strong>Artículo 31:</strong> Dice que la Constitución, las leyes del Congreso y los tratados con otros países son la <strong>ley suprema</strong>. Las provincias deben cumplirlas aunque sus propias leyes digan lo contrario.</p>
+                <div class="example-box">💡 Ejemplo: Ninguna provincia puede hacer una ley que vaya contra la Constitución Nacional.</div>
+            </div>
+        </div>
+
+        <!-- FICHA 2 -->
+        <div class="study-card">
+            <div class="card-header">📜 2. Preámbulo</div>
+            <div class="card-content">
+                <p>Es la <strong>introducción</strong> o presentación de la Constitución.</p>
+                <ul>
+                    <li><strong>Autor:</strong> “Nos, los representantes del pueblo…” → Soberanía popular.</li>
+                    <li><strong>Origen:</strong> Las provincias se unen voluntariamente.</li>
+                    <li><strong>Objetivos:</strong> Unión nacional, justicia, paz interior, defensa común, bienestar general y libertad.</li>
+                    <li><strong>Destinatarios:</strong> Argentinos y todo hombre del mundo que quiera vivir en el país.</li>
+                    <li><strong>Cierre:</strong> Invocan a Dios y establecen la Constitución.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FICHA 3 -->
+        <div class="study-card">
+            <div class="card-header">📖 3. Primera parte: Declaraciones, Derechos y Garantías</div>
+            <div class="card-content">
+                <p><strong>Declaraciones:</strong> Principios fundamentales del Estado (ej: forma republicana).</p>
+                <p><strong>Derechos:</strong> Facultades de las personas (vida, libertad, igualdad, propiedad).</p>
+                <p><strong>Garantías:</strong> Mecanismos para proteger los derechos (ej: hábeas corpus).</p>
+                <div class="example-box">🔒 Ejemplo: Si te detienen sin razón, una garantía permite defenderte.</div>
+            </div>
+        </div>
+
+        <!-- FICHA 4 -->
+        <div class="study-card">
+            <div class="card-header">📑 4. Primer y segundo capítulo (CN)</div>
+            <div class="card-content">
+                <p><strong>Capítulo 1:</strong> Habla de las declaraciones generales (forma de gobierno, religión, etc.)</p>
+                <p><strong>Capítulo 2:</strong> Trata sobre los <strong>derechos civiles</strong>: libertad, igualdad ante la ley, propiedad, etc.</p>
+                <p>✨ Son la base de nuestros derechos como ciudadanos.</p>
+            </div>
+        </div>
+
+        <!-- FICHA 5: Libertad -->
+        <div class="study-card">
+            <div class="card-header">🕊️ 5. Libertad: individual y social</div>
+            <div class="card-content">
+                <p><strong>Libertad individual:</strong> Pensamientos, gustos y acciones propias. Ej: elegir qué música escuchar.</p>
+                <p><strong>Libertad social:</strong> La que surge al vivir en comunidad. Condiciona la libertad individual porque debemos respetar a los demás. Es la libertad propiamente humana.</p>
+                <div class="example-box">✋ Mi libertad termina donde empieza la de los otros.</div>
+            </div>
+        </div>
+
+        <!-- FICHA 6: Dignidad humana -->
+        <div class="study-card">
+            <div class="card-header">🌟 6. Dignidad humana</div>
+            <div class="card-content">
+                <p><strong>¿Qué es?</strong> Cualidad propia de todas las personas.</p>
+                <p><strong>¿En qué se funda?</strong> En que somos <strong>conscientes, sociales, con inteligencia y libertad</strong>. Nacemos con dignidad, nos iguala y permite ejercer derechos.</p>
+                <div class="example-box">❤️ Todas las personas merecen respeto, sin importar su condición.</div>
+            </div>
+        </div>
+
+        <!-- FICHA 7: Relación libertad y dignidad -->
+        <div class="study-card">
+            <div class="card-header">🔗 7. ¿Por qué libertad y dignidad están relacionadas?</div>
+            <div class="card-content">
+                <p>No puede haber <strong>vida digna sin libertad</strong>. La dignidad se expresa cuando podemos elegir, opinar y actuar según nuestras convicciones. Si nos sacan la libertad, la dignidad se daña.</p>
+                <p>La libertad individual (expresarse, pensar) y política (decidir) son necesarias para una vida plena.</p>
+            </div>
+        </div>
+
+        <!-- FICHA 8: Sin libertad no hay dignidad -->
+        <div class="study-card">
+            <div class="card-header">🚫 8. ¿Por qué no puede haber vida digna sin libertad?</div>
+            <div class="card-content">
+                <p>Cuando las personas no son libres (pobreza extrema, opresión) no pueden <strong>elegir qué vida vivir</strong>. La dignidad se convierte en un anhelo y una lucha, no en una realidad.</p>
+                <p>📌 Ejemplo: Una persona sin acceso a comida o educación no puede desarrollar su proyecto de vida.</p>
+            </div>
+        </div>
+
+        <!-- FICHA 9: Democracia -->
+        <div class="study-card">
+            <div class="card-header">🗳️ 9. Democracia y sus características</div>
+            <div class="card-content">
+                <p><strong>Concepto:</strong> Gobierno del pueblo + estilo de vida basado en respeto, igualdad y consenso.</p>
+                <ul>
+                    <li>Pluralidad de partidos</li>
+                    <li>Igualdad ante la ley</li>
+                    <li>Respeto de derechos individuales</li>
+                    <li>División de poderes (Ejecutivo, Legislativo, Judicial)</li>
+                    <li>Soberanía popular (el pueblo elige)</li>
+                    <li>Periodicidad en los cargos</li>
+                    <li>Publicidad de los actos de gobierno</li>
+                    <li>Responsabilidad de los funcionarios</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FICHA 11: Normas e importancia -->
+        <div class="study-card">
+            <div class="card-header">📏 11. ¿Qué son las normas?</div>
+            <div class="card-content">
+                <p><strong>Normas:</strong> Reglas que regulan las acciones de las personas para una buena convivencia.</p>
+                <p><strong>Importancia:</strong> Evitan conflictos, organizan la vida en sociedad y cambian con el tiempo. Sin ellas sería difícil vivir en comunidad.</p>
+                <div class="example-box">🏫 Ejemplo cotidiano: Hacer fila, respetar turnos, cumplir leyes.</div>
+            </div>
+        </div>
+
+        <!-- FICHA 12: Tipos de normas (sociales, morales, culturales, jurídicas) -->
+        <div class="study-card">
+            <div class="card-header">⚖️ 12. Tipos de normas + ejemplos</div>
+            <div class="card-content">
+                <p><strong>Sociales:</strong> Usos y costumbres para convivir. Ej: saludar, ceder el asiento.</p>
+                <p><strong>Morales:</strong> Lo bueno/malo según valores. Ej: no traicionar a un amigo, ayudar sin que te lo pidan.</p>
+                <p><strong>Culturales:</strong> Identidad de una comunidad. Ej: tomar mate, saludar con beso, festejar el carnaval.</p>
+                <p><strong>Jurídicas:</strong> Leyes del Estado (obligatorias, sanciones). Ej: Constitución Nacional, ley de nombre.</p>
+                <div class="example-box">📚 Dos ejemplos de cada una:<br>
+                - Social: hacer fila, decir “gracias”.<br>
+                - Moral: ser empático, defender a alguien.<br>
+                - Cultural: cantar el himno, usar “vos”.<br>
+                - Jurídica: no robar, respetar la velocidad máxima.
+                </div>
+            </div>
+        </div>
+
+        <!-- FICHA 14: Reflexión normas importantes -->
+        <div class="study-card">
+            <div class="card-header">🤔 14. Reflexión: normas más importantes hoy</div>
+            <div class="card-content">
+                <p>Para convivir hoy en día, son muy importantes las <strong>normas morales</strong> (empatía, solidaridad, honestidad) y también las <strong>normas jurídicas</strong> para que haya orden. Sin respeto y valores, ninguna ley funciona sola. Las normas sociales también ayudan a que nos tratemos bien.</p>
+                <p>✨ Elegiría la moral y la legal como las más claves para una sociedad justa.</p>
+            </div>
+        </div>
+
+        <!-- FICHA 15: Pobreza y dignidad -->
+        <div class="study-card">
+            <div class="card-header">🍲 15. Pobreza: necesidades básicas e impacto en la dignidad</div>
+            <div class="card-content">
+                <p><strong>Necesidades que no pueden cubrir:</strong> alimentación, vivienda, salud, educación.</p>
+                <p><strong>Impacto en dignidad:</strong> Limita la libertad real para decidir cómo vivir. La persona queda atrapada en la supervivencia, no puede desarrollar su proyecto de vida. La dignidad se vuelve un anhelo, no una realidad diaria.</p>
+                <div class="example-box">📉 Sin comida ni techo, es casi imposible ejercer derechos. La pobreza extrema destruye la libertad.</div>
+            </div>
+        </div>
+
+        <!-- FICHA EXTRA: Autoritarismo (contexto del PDF) -->
+        <div class="study-card">
+            <div class="card-header">⚠️ Concepto de autoritarismo</div>
+            <div class="card-content">
+                <p>El autoritarismo concentra el poder en pocos, sin buscar consenso. Limita la libertad y niega la igualdad. Ej: dictaduras, regímenes donde no hay división de poderes ni respeto por la oposición. Es lo opuesto a la democracia.</p>
+                <p>En la historia hubo sociedades patriarcales y verticalistas, pero la lucha por la libertad siempre existió.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-note">
+        📝 Fichas basadas en el PDF "fec examen 1" · Respondidas con lenguaje claro para estudiar · ¡Suerte en tu examen!
+    </div>
+</div>
+
+<div style="text-align: center; margin: 20px auto;">
+    <button class="download-btn" id="downloadHTML">⬇️ Descargar estas fichas como archivo HTML</button>
+</div>
+
+<script>
+    const downloadBtn = document.getElementById('downloadHTML');
+    downloadBtn.addEventListener('click', function() {
+        // Obtenemos el contenido principal
+        const contentToSave = document.getElementById('studyMaterial').cloneNode(true);
+        // Creamos un documento HTML completo para descargar
+        const docHtml = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Fichas de Estudio - Examen Ciudadanía</title>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                body {
+                    background: #f0f2f5;
+                    font-family: 'Segoe UI', 'Roboto', 'Comic Neue', sans-serif;
+                    padding: 30px 20px;
+                    color: #1e2a3a;
+                }
+                .study-container {
+                    max-width: 1300px;
+                    margin: 0 auto;
+                }
+                h1 {
+                    text-align: center;
+                    font-size: 2.2rem;
+                    background: linear-gradient(135deg, #1e3c72, #2b4c7c);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    color: transparent;
+                    margin-bottom: 10px;
+                }
+                .sub {
+                    text-align: center;
+                    color: #4a627a;
+                    margin-bottom: 40px;
+                    border-bottom: 2px dashed #cbd5e1;
+                    display: inline-block;
+                    width: auto;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding-bottom: 8px;
+                }
+                .cards-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+                    gap: 25px;
+                }
+                .study-card {
+                    background: white;
+                    border-radius: 28px;
+                    box-shadow: 0 12px 22px -10px rgba(0, 0, 0, 0.12);
+                    transition: transform 0.2s ease;
+                    overflow: hidden;
+                    border: 1px solid #e4e9f0;
+                }
+                .study-card:hover {
+                    transform: translateY(-5px);
+                }
+                .card-header {
+                    background: #2c3e66;
+                    color: white;
+                    padding: 18px 20px;
+                    font-weight: bold;
+                    font-size: 1.35rem;
+                    border-bottom: 4px solid #f9b43a;
+                }
+                .card-header span {
+                    background: #f9b43a;
+                    color: #1e2a3a;
+                    font-size: 0.8rem;
+                    border-radius: 40px;
+                    padding: 4px 10px;
+                    margin-left: 12px;
+                    font-weight: 600;
+                }
+                .card-content {
+                    padding: 20px 22px;
+                    background: #fefefe;
+                    flex-grow: 1;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    color: #1e2f3e;
+                }
+                .card-content ul, .card-content ol {
+                    margin-left: 22px;
+                    margin-bottom: 12px;
+                }
+                .example-box {
+                    background: #f8f9fc;
+                    border-left: 5px solid #f9b43a;
+                    padding: 12px 16px;
+                    margin: 12px 0;
+                    border-radius: 16px;
+                }
+                .footer-note {
+                    text-align: center;
+                    margin-top: 45px;
+                    font-size: 0.85rem;
+                    color: #4b6b8f;
+                    background: #e9edf2;
+                    padding: 14px;
+                    border-radius: 60px;
+                    width: fit-content;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                @media (max-width: 700px) {
+                    .cards-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            ${contentToSave.outerHTML}
+        </body>
+        </html>
+        `;
+        
+        const blob = new Blob([docHtml], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'fichas_estudio_constitucion.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+</script>
+</body>
+</html>
